@@ -1,19 +1,47 @@
-.App {
+/* Primary Color:
+Midnight Blue (#2C3E50): Represents trust, reliability, and professionalism. 
+
+Accent Color:
+Electric Lime Green (#A3E635): Signifies innovation, eco-friendliness, and energy. It gives a modern tech feel to the app.
+
+Secondary Color:
+Steel Grey (#BDC3C7): Complements the primary color while adding a sleek, metallic tone, often associated with vehicles.
+
+Contrast Color:
+Bright Orange (#F39C12): Adds a dash of vibrancy for calls-to-action (CTAs) like buttons or alerts.
+
+*/
+
+main {
   text-align: center;
+  background-color: #bdc3c7;
+  min-height: 100vh;
 }
 
+.imgMain {
+  border-radius: 25px;
+  max-height: 400px;
+  margin-top: 10%;
+}
+
+@media (max-width: 768px) {
+  .imgMain {
+    max-height: 300px;
+  }
+}
+/* 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
+} */
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -22,17 +50,17 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
-.App-link {
+/* .App-link {
   color: #61dafb;
-}
+} */
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} */
