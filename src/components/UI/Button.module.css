@@ -9,6 +9,8 @@
   background-color: none;
   border: none;
 }
+
+/* hover over button */
 .text-only:hover {
   cursor: pointer;
 }
