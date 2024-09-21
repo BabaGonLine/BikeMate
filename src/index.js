@@ -5,8 +5,11 @@ import reportWebVitals from "./reportWebVitals";
 import { routeList } from "./routes/routList";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
+import { initLocalStorage } from "./tools/commonHelpers";
 
 const router = createBrowserRouter(routeList);
+
+initLocalStorage();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

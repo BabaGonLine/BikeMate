@@ -14,6 +14,20 @@ export const setLocalStorage = (storageKey, storageItem, override = true) => {
   return updatedStorage;
 };
 
+// for first load of application
+export function initLocalStorage() {
+  const items = JSON.parse(localStorage.getItem("language"));
+  if (items) {
+    return;
+  }
+
+  setLocalStorage("language", { lang: "US" }, true);
+  //load translation
+  import("./translation/US.js").then((res) => {
+    setLocalStorage("language", { dictionary: res.Languge }, true);
+  });
+}
+
 export const getTranslation = (name) => {
   const items = JSON.parse(localStorage.getItem("language"));
   const retTranslation = items.dictionary[name];
