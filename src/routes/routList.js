@@ -2,6 +2,11 @@ import RootLayout from "./RootLayout";
 import App from "../App";
 import NewVehicle from "./NewVehicle";
 
+import {
+  loader as newVehicleLoader,
+  action as newVehicleAction,
+} from "../components/Vehicles/VehicleForm";
+
 export const routeList = [
   {
     path: "/",
@@ -14,9 +19,8 @@ export const routeList = [
       {
         path: "/NewVehicle",
         element: <NewVehicle />,
-        action: () => {
-          alert("action");
-        },
+        loader: newVehicleLoader,
+        action: newVehicleAction,
       },
     ],
   },
