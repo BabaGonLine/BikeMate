@@ -10,7 +10,7 @@ export default function VehicleForm() {
 
   useEffect(() => {
     setFilteredBrands(vBrandsList?.filter((b) => b.type === selectedType));
-  }, [selectedType]);
+  }, [vBrandsList, selectedType]);
 
   function onTypeChange(event) {
     console.log(event.target.value);
