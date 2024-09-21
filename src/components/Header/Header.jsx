@@ -25,7 +25,7 @@ const Header = () => {
 
   useEffect(() => {
     if (language) {
-      const langugeSet = setLocalStorage("language", { lang: language }, true);
+      setLocalStorage("language", { lang: language }, true);
       //load translation
       import(`../../tools/translation/${language}.js`).then((res) => {
         setLocalStorage("language", { dictionary: res.Languge }, true);
