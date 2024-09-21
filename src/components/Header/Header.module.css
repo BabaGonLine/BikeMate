@@ -34,8 +34,12 @@
   height: 50%;
 }
 
+.lang {
+  border-radius: 15px;
+}
+
 /* Burger Menu */
-.burger {
+/* .burger {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -60,10 +64,10 @@
 
 .line.open:nth-child(3) {
   transform: rotate(-45deg) translate(5px, -5px);
-}
+} */
 
 /* Navigation menu */
-.nav-menu {
+/* .nav-menu {
   position: absolute;
   top: 99%;
   left: -10px;
@@ -90,11 +94,11 @@
   color: #f39c12;
   text-decoration: none;
   font-family: "Roboto", sans-serif;
-}
+} */
 
 /* Media Queries */
 @media (min-width: 768px) {
-  .burger {
+  /* .burger {
     display: none;
   }
   .nav-menu {
@@ -104,5 +108,5 @@
   .nav-menu ul {
     display: flex;
     gap: 2rem;
-  }
+  } */
 }

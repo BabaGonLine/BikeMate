@@ -1,6 +1,7 @@
 import classes from "./VehiclePanel.module.css";
 import Button from "../UI/Button";
 import { Link } from "react-router-dom";
+import { getTranslation } from "../../tools/commonHelpers";
 
 const VEHICLES = [];
 
@@ -12,7 +13,7 @@ export default function VehiclePanel() {
           <div className={classes.card}>
             <p>No vehicles found</p>
             <Link to="/NewVehicle">
-              <Button>Add vehicle</Button>
+              <Button>{getTranslation("btnAddVehicle")}</Button>
             </Link>
           </div>
         </section>
