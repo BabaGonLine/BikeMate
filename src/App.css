@@ -21,7 +21,7 @@ main {
 .imgMain {
   border-radius: 25px;
   max-height: 400px;
-  margin-top: 10%;
+  margin-top: 2%;
 }
 
 @media (max-width: 768px) {
