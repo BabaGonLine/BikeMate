@@ -8,6 +8,7 @@ export default function VehicleForm() {
   const [selectedType, setSelectedType] = useState("motorcycle");
   const [filteredBrands, setFilteredBrands] = useState([]);
 
+  //problem
   useEffect(() => {
     setFilteredBrands(vBrandsList?.filter((b) => b.type === selectedType));
   }, [selectedType]);
