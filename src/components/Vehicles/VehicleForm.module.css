@@ -4,17 +4,35 @@
   width: 20rem;
 }
 
+.controls-row {
+  display: flex;
+  gap: 2rem;
+}
+
+.controls-row .form-label {
+  width: 30%;
+}
+
+.controls-row .form-input {
+  width: 70%;
+}
+
+/* .controls-row p {
+  width: 50%;
+} */
+
 .form label {
-  display: block;
+  display: inline-flex;
   margin-bottom: 0.4rem;
   color: #f39c12;
   font-weight: bold;
+  width: 100%;
 }
 
 .form input,
 .form textarea,
 .form select {
-  display: block;
+  display: inline-flex;
   width: 100%;
   font: inherit;
   padding: 0.5rem;
@@ -24,9 +42,9 @@
   color: #28262c;
 }
 
-.form select {
+/* .form select {
   width: 105%;
-}
+} */
 
 .actions {
   display: flex;

@@ -18,56 +18,70 @@ export default function VehicleForm() {
   }
   return (
     <Form method="post" className={classes.form}>
-      <p>
-        <label htmlFor="vType">Type</label>
-        <select
-          id="vType"
-          name="vType"
-          value={selectedType}
-          onChange={onTypeChange}
-        >
-          <option value="motorcycle">Motorcycle</option>
-          <option value="private">Private</option>
-        </select>
+      <div className={classes["controls-row"]}>
+        <p>
+          <label htmlFor="vType">Type</label>
+          <select
+            id="vType"
+            name="vType"
+            value={selectedType}
+            onChange={onTypeChange}
+          >
+            <option value="motorcycle">Motorcycle</option>
+            <option value="private">Private</option>
+          </select>
+        </p>
+        <p>
+          <label htmlFor="vBrand">Brand *</label>
 
-        {/* <input type="text" id="vBrand" name="vBrand" required /> */}
-      </p>
-      <p>
-        <label htmlFor="vBrand">Brand *</label>
-
-        <select id="vBrand" name="vBrand">
-          {filteredBrands.map((brand) => (
-            <option key={brand.brand} value={brand.brand}>
-              {brand.brand}
-            </option>
-          ))}
-        </select>
-
-        {/* <input type="text" id="vBrand" name="vBrand" required /> */}
-      </p>
-      <p>
-        <label htmlFor="vModel">Model *</label>
-        <input type="text" id="vModel" name="vModel" required />
-      </p>
-      <p>
-        <label htmlFor="vNumber">Number *</label>
-        <input type="number" id="vNumber" name="vNumber" required />
-      </p>
-      <p>
-        <label htmlFor="vYear">Year *</label>
-        <input
-          type="number"
-          max={2100}
-          min={1920}
-          id="vYear"
-          name="vYear"
-          required
-        />
-      </p>
-      <p>
-        <label htmlFor="vKm">Current Kilometers</label>
-        <input type="number" id="vKm" name="vKm" />
-      </p>
+          <select id="vBrand" name="vBrand">
+            {filteredBrands.map((brand) => (
+              <option key={brand.brand} value={brand.brand}>
+                {brand.brand}
+              </option>
+            ))}
+          </select>
+        </p>
+      </div>
+      <div className={classes["controls-row"]}>
+        <p className={classes["form-label"]}>
+          <label htmlFor="vModel">Model *</label>
+        </p>
+        <p className={classes["form-input"]}>
+          <input type="text" id="vModel" name="vModel" required />
+        </p>
+      </div>
+      <div className={classes["controls-row"]}>
+        <p className={classes["form-label"]}>
+          <label htmlFor="vNumber">Number *</label>
+        </p>
+        <p className={classes["form-input"]}>
+          <input type="number" id="vNumber" name="vNumber" required />
+        </p>
+      </div>
+      <div className={classes["controls-row"]}>
+        <p className={classes["form-label"]}>
+          <label htmlFor="vYear">Year *</label>
+        </p>
+        <p className={classes["form-input"]}>
+          <input
+            type="number"
+            max={2100}
+            min={1920}
+            id="vYear"
+            name="vYear"
+            required
+          />
+        </p>
+      </div>
+      <div className={classes["controls-row"]}>
+        <p className={classes["form-label"]}>
+          <label htmlFor="vKm">Current Kilometers</label>
+        </p>
+        <p className={classes["form-input"]}>
+          <input type="number" id="vKm" name="vKm" />
+        </p>
+      </div>
       <p className={classes.actions}>
         <Link to="..">
           <Button textOnly>Cancel</Button>
