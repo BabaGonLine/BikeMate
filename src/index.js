@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 import { routeList } from "./routes/routList";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
 const router = createBrowserRouter(routeList);

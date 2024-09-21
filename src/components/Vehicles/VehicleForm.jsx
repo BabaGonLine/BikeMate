@@ -2,11 +2,15 @@ import { Form, Link, redirect, useLoaderData } from "react-router-dom";
 import Button from "../UI/Button";
 import classes from "./VehicleForm.module.css";
 import { useEffect, useState } from "react";
+import { getTranslation } from "../../tools/commonHelpers";
 
 export default function VehicleForm() {
   const vBrandsList = useLoaderData();
   const [selectedType, setSelectedType] = useState("motorcycle");
   const [filteredBrands, setFilteredBrands] = useState([]);
+
+  //   const items = JSON.parse(localStorage.getItem("language"));
+  //   console.log(items.dictionary.vYear);
 
   useEffect(() => {
     setFilteredBrands(vBrandsList?.filter((b) => b.type === selectedType));
@@ -20,19 +24,19 @@ export default function VehicleForm() {
     <Form method="post" className={classes.form}>
       <div className={classes["controls-row"]}>
         <p>
-          <label htmlFor="vType">Type</label>
+          <label htmlFor="vType">{getTranslation("vType")}</label>
           <select
             id="vType"
             name="vType"
             value={selectedType}
             onChange={onTypeChange}
           >
-            <option value="motorcycle">Motorcycle</option>
-            <option value="private">Private</option>
+            <option value="motorcycle">{getTranslation("motorcycle")}</option>
+            <option value="private">{getTranslation("privateV")}</option>
           </select>
         </p>
         <p>
-          <label htmlFor="vBrand">Brand *</label>
+          <label htmlFor="vBrand">{getTranslation("vBrand")}</label>
 
           <select id="vBrand" name="vBrand">
             {filteredBrands.map((brand) => (
@@ -45,7 +49,7 @@ export default function VehicleForm() {
       </div>
       <div className={classes["controls-row"]}>
         <p className={classes["form-label"]}>
-          <label htmlFor="vModel">Model *</label>
+          <label htmlFor="vModel">{getTranslation("vModel")}</label>
         </p>
         <p className={classes["form-input"]}>
           <input type="text" id="vModel" name="vModel" required />
@@ -53,7 +57,7 @@ export default function VehicleForm() {
       </div>
       <div className={classes["controls-row"]}>
         <p className={classes["form-label"]}>
-          <label htmlFor="vNumber">Number *</label>
+          <label htmlFor="vNumber">{getTranslation("vNumber")}</label>
         </p>
         <p className={classes["form-input"]}>
           <input type="number" id="vNumber" name="vNumber" required />
@@ -61,7 +65,7 @@ export default function VehicleForm() {
       </div>
       <div className={classes["controls-row"]}>
         <p className={classes["form-label"]}>
-          <label htmlFor="vYear">Year *</label>
+          <label htmlFor="vYear">{getTranslation("vYear")}</label>
         </p>
         <p className={classes["form-input"]}>
           <input
@@ -76,7 +80,7 @@ export default function VehicleForm() {
       </div>
       <div className={classes["controls-row"]}>
         <p className={classes["form-label"]}>
-          <label htmlFor="vKm">Current Kilometers</label>
+          <label htmlFor="vKm">{getTranslation("vKm")}</label>
         </p>
         <p className={classes["form-input"]}>
           <input type="number" id="vKm" name="vKm" />
@@ -84,10 +88,10 @@ export default function VehicleForm() {
       </div>
       <p className={classes.actions}>
         <Link to="..">
-          <Button textOnly>Cancel</Button>
+          <Button textOnly>{getTranslation("btnCancel")}</Button>
         </Link>
 
-        <Button>Add Vehicle</Button>
+        <Button>{getTranslation("btnAddVehicle")}</Button>
       </p>
     </Form>
   );

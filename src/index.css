@@ -87,3 +87,14 @@ code {
   font-weight: 900;
   font-style: italic;
 }
+
+.langDDl .dropdown-toggle::after {
+  display: none !important;
+}
+
+.langDDl .dropdown-item,
+.langDDl .dropdown-menu.show {
+  max-width: 10px !important;
+  inset: 0 2px auto 0 !important;
+  background-color: #2c3e50;
+}
