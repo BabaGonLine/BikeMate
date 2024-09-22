@@ -2,10 +2,10 @@ import RootLayout from "./RootLayout";
 import App from "../App";
 import NewVehicle from "./NewVehicle";
 
-// import {
-//   loader as newVehicleLoader,
-//   action as newVehicleAction,
-// } from "../components/Vehicles/VehicleForm";
+import {
+  loader as newVehicleLoader,
+  //  action as newVehicleAction,
+} from "../components/Vehicles/VehicleForm";
 import ErrorPage from "../components/UI/ErrorPage";
 
 export const routeList = [
@@ -21,14 +21,9 @@ export const routeList = [
       {
         path: "/NewVehicle",
         element: <NewVehicle />,
-        // loader: newVehicleLoader,
+        loader: newVehicleLoader,
         // action: newVehicleAction,
-        loader: () => {
-          return [
-            { brand: "Honda", type: "motorcycle" },
-            { brand: "Kawasaky", type: "motorcycle" },
-          ];
-        },
+
         action: () => {
           return null;
         },
