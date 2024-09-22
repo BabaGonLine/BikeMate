@@ -1,16 +1,30 @@
-import { useRouteError } from "react-router-dom";
+import { isRouteErrorResponse, useRouteError } from "react-router-dom";
 import Alert from "react-bootstrap/Alert";
 import Header from "../Header/Header";
 import classes from "./ErrorPage.module.css";
 
 export default function ErrorPage() {
   const error = useRouteError();
-  let errMessage = "Error has accured!";
+  // let errMessage = "Error has accured!";
   // const err = errorObj.data;
-  console.log(error);
+
+  let errorMessage;
+  if (isRouteErrorResponse(error)) {
+    // error is type `ErrorResponse`
+    errorMessage = error.error?.message || error.statusText;
+  } else if (error instanceof Error) {
+    errorMessage = error.message;
+  } else if (typeof error === "string") {
+    errorMessage = error;
+  } else {
+    console.error(error);
+    errorMessage = "Unknown error";
+  }
+
+  console.log(errorMessage);
 
   if (error.status === 404) {
-    errMessage = "404 - Page Not Found";
+    errorMessage = "404 - Page Not Found";
     // return (
     //   <>
     //     <Header />
@@ -23,7 +37,7 @@ export default function ErrorPage() {
       <Header />
       <Alert variant="danger">
         <Alert.Heading>{error.statusText}</Alert.Heading>
-        <p className={classes.error}>{errMessage}</p>
+        <p className={classes.error}>{errorMessage}</p>
         <hr />
         <p className="mb-0">Need help? Contact Support</p>
       </Alert>
