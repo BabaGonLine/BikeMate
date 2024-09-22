@@ -52,7 +52,7 @@ export default function VehicleForm() {
       </div>
       <div className={classes["controls-row"]}>
         <p className={classes["form-label"]}>
-          <label htmlFor="vModel">{getTranslation("vModel", "label")}</label>
+          <label htmlFor="vModel">{getTranslation("vModel1", "label")}</label>
         </p>
         <p className={classes["form-input"]}>
           <input type="text" id="vModel" name="vModel" required />
