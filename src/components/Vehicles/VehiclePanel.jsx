@@ -11,9 +11,9 @@ export default function VehiclePanel() {
       {VEHICLES.length === 0 && (
         <section className={classes.section}>
           <div className={classes.card}>
-            <p>No vehicles found</p>
+            <p>{getTranslation("noVehicleFound", "message")}</p>
             <Link to="/NewVehicle">
-              <Button>{getTranslation("btnAddVehicle")}</Button>
+              <Button>{getTranslation("btnAddVehicle", "button")}</Button>
             </Link>
           </div>
         </section>

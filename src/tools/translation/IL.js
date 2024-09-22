@@ -1,14 +1,21 @@
 export const Languge = {
-  btnCancel: "בטל",
-  btnAddVehicle: "הוסף רכב",
+  message: {
+    noVehicleFound: "לא נמצאו רכבים",
+  },
 
-  motorcycle: "אופנוע",
-  privateV: "פרטי",
+  button: {
+    btnCancel: "בטל",
+    btnAddVehicle: "הוסף רכב",
+  },
 
-  vYear: "* שנה",
-  vNumber: "* מספר רכב",
-  vBrand: "* חברה",
-  vType: "* סוג",
-  vModel: "* דגם",
-  vKm: "מס קמ",
+  options: { motorcycle: "אופנוע", privateV: "פרטי" },
+
+  label: {
+    vYear: "שנה *",
+    vNumber: "מספר רכב *",
+    vBrand: "חברה *",
+    vType: "סוג *",
+    vModel: "דגם *",
+    vKm: "מס קמ",
+  },
 };
