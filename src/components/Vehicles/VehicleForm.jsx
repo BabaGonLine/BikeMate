@@ -17,7 +17,6 @@ export default function VehicleForm() {
   }, [vBrandsList, selectedType]);
 
   function onTypeChange(event) {
-    console.log(event.target.value);
     setSelectedType(event.target.value);
   }
   return (
