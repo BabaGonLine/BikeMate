@@ -15,7 +15,6 @@ const Header = () => {
 
   useEffect(() => {
     const langugeSet = setLocalStorage("language", { lang: "IL" }, false);
-    console.log("set lang in useEffect", langugeSet);
     setLanguage(langugeSet ? langugeSet.lang : "IL");
 
     if (langugeSet && langugeSet.lang === "IL") {
@@ -31,7 +30,6 @@ const Header = () => {
   useEffect(() => {
     if (language) {
       setLocalStorage("language", { lang: language }, true);
-      console.log("set lang in langchange", language);
       //load translation
       import(`../../tools/translation/${language}.js`).then((res) => {
         setLocalStorage("language", { dictionary: res.Languge }, true);

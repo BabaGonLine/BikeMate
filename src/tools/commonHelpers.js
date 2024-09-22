@@ -1,7 +1,6 @@
 //Check if item exist in local storage
 //not overwrite if set to overwrite false
 export const setLocalStorage = (storageKey, storageItem, override = true) => {
-  console.log(storageKey, storageItem, override);
   if (!storageKey || !storageItem || storageItem.length === 0) {
     throw new Error("no data avail");
   }
@@ -47,7 +46,6 @@ export const getTranslation = (name, category = "") => {
 
     return retTranslation;
   } catch (error) {
-    console.log(name, category);
     return new Error("not found");
   }
 };
