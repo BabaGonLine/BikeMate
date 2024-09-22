@@ -24,19 +24,23 @@ export default function VehicleForm() {
     <Form method="post" className={classes.form}>
       <div className={classes["controls-row"]}>
         <p>
-          <label htmlFor="vType">{getTranslation("vType")}</label>
+          <label htmlFor="vType">{getTranslation("vType", "label")}</label>
           <select
             id="vType"
             name="vType"
             value={selectedType}
             onChange={onTypeChange}
           >
-            <option value="motorcycle">{getTranslation("motorcycle")}</option>
-            <option value="private">{getTranslation("privateV")}</option>
+            <option value="motorcycle">
+              {getTranslation("motorcycle", "options")}
+            </option>
+            <option value="private">
+              {getTranslation("privateV", "options")}
+            </option>
           </select>
         </p>
         <p>
-          <label htmlFor="vBrand">{getTranslation("vBrand")}</label>
+          <label htmlFor="vBrand">{getTranslation("vBrand", "label")}</label>
 
           <select id="vBrand" name="vBrand">
             {filteredBrands.map((brand) => (
@@ -49,7 +53,7 @@ export default function VehicleForm() {
       </div>
       <div className={classes["controls-row"]}>
         <p className={classes["form-label"]}>
-          <label htmlFor="vModel">{getTranslation("vModel")}</label>
+          <label htmlFor="vModel">{getTranslation("vModel", "label")}</label>
         </p>
         <p className={classes["form-input"]}>
           <input type="text" id="vModel" name="vModel" required />
@@ -57,7 +61,7 @@ export default function VehicleForm() {
       </div>
       <div className={classes["controls-row"]}>
         <p className={classes["form-label"]}>
-          <label htmlFor="vNumber">{getTranslation("vNumber")}</label>
+          <label htmlFor="vNumber">{getTranslation("vNumber", "label")}</label>
         </p>
         <p className={classes["form-input"]}>
           <input type="number" id="vNumber" name="vNumber" required />
@@ -65,7 +69,7 @@ export default function VehicleForm() {
       </div>
       <div className={classes["controls-row"]}>
         <p className={classes["form-label"]}>
-          <label htmlFor="vYear">{getTranslation("vYear")}</label>
+          <label htmlFor="vYear">{getTranslation("vYear", "label")}</label>
         </p>
         <p className={classes["form-input"]}>
           <input
@@ -80,7 +84,7 @@ export default function VehicleForm() {
       </div>
       <div className={classes["controls-row"]}>
         <p className={classes["form-label"]}>
-          <label htmlFor="vKm">{getTranslation("vKm")}</label>
+          <label htmlFor="vKm">{getTranslation("vKm", "label")}</label>
         </p>
         <p className={classes["form-input"]}>
           <input type="number" id="vKm" name="vKm" />
@@ -88,10 +92,10 @@ export default function VehicleForm() {
       </div>
       <p className={classes.actions}>
         <Link to="..">
-          <Button textOnly>{getTranslation("btnCancel")}</Button>
+          <Button textOnly>{getTranslation("btnCancel", "button")}</Button>
         </Link>
 
-        <Button>{getTranslation("btnAddVehicle")}</Button>
+        <Button>{getTranslation("btnAddVehicle", "button")}</Button>
       </p>
     </Form>
   );

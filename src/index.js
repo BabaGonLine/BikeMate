@@ -6,10 +6,11 @@ import { routeList } from "./routes/routList";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 import { initLocalStorage } from "./tools/commonHelpers";
+import { Languge as langHebDictionary } from "./tools/translation/IL.js";
 
 const router = createBrowserRouter(routeList);
 
-initLocalStorage();
+initLocalStorage(langHebDictionary);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

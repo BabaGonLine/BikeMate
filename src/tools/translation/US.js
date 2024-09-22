@@ -1,13 +1,23 @@
 export const Languge = {
-  btnCancel: "Cancel",
-  btnAddVehicle: "Add Vehicle",
-  motorcycle: "Motorcycle",
-  privateV: "Private",
+  message: {
+    noVehicleFound: "No Vehicles Found",
+  },
 
-  vYear: "Year *",
-  vNumber: "Vehicle number *",
-  vBrand: "Brand *",
-  vType: "Type *",
-  vModel: "Model *",
-  vKm: "Current KM",
+  button: {
+    btnCancel: "Cancel",
+    btnAddVehicle: "Add Vehicle",
+    motorcycle: "Motorcycle",
+    privateV: "Private",
+  },
+
+  options: { motorcycle: "Motorcycle", privateV: "Private" },
+
+  label: {
+    vYear: "Year *",
+    vNumber: "Vehicle number *",
+    vBrand: "Brand *",
+    vType: "Type *",
+    vModel: "Model *",
+    vKm: "Current KM",
+  },
 };

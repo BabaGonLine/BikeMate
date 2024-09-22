@@ -10,22 +10,28 @@ import { setLocalStorage } from "../../tools/commonHelpers";
 
 const Header = () => {
   const [language, setLanguage] = useState();
-  let availableLang = ["US", "IL", "BR"];
-  let filteredLang = availableLang.filter((lang) => lang !== language);
+
+  let filteredLang = ["IL", "US", "BR"].filter((lang) => lang !== language);
 
   useEffect(() => {
-    const langugeSet = setLocalStorage("language", { lang: "US" }, false);
-    setLanguage(langugeSet ? langugeSet.lang : "US");
+    const langugeSet = setLocalStorage("language", { lang: "IL" }, false);
+    console.log("set lang in useEffect", langugeSet);
+    setLanguage(langugeSet ? langugeSet.lang : "IL");
+
+    if (langugeSet && langugeSet.lang === "IL") {
+      import(".././/../tools/translation/bodyRtl.css");
+    }
 
     //load translation
     import("../../tools/translation/US.js").then((res) => {
-      setLocalStorage("language", { dictionary: res.Languge }, true);
+      setLocalStorage("language", { dictionary: res.Languge }, false);
     });
   }, []);
 
   useEffect(() => {
     if (language) {
       setLocalStorage("language", { lang: language }, true);
+      console.log("set lang in langchange", language);
       //load translation
       import(`../../tools/translation/${language}.js`).then((res) => {
         setLocalStorage("language", { dictionary: res.Languge }, true);
@@ -38,8 +44,6 @@ const Header = () => {
         import(".././/../tools/translation/bodyLtr.css");
         redirect("..");
       }
-
-      // Need to set RTL
     }
   }, [language]);
 
