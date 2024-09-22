@@ -4,7 +4,7 @@ import NewVehicle from "./NewVehicle";
 
 import {
   loader as newVehicleLoader,
-  //  action as newVehicleAction,
+  action as newVehicleAction,
 } from "../components/Vehicles/VehicleForm";
 import ErrorPage from "../components/UI/ErrorPage";
 
@@ -22,11 +22,7 @@ export const routeList = [
         path: "/NewVehicle",
         element: <NewVehicle />,
         loader: newVehicleLoader,
-        // action: newVehicleAction,
-
-        action: () => {
-          return null;
-        },
+        action: newVehicleAction,
       },
     ],
   },
