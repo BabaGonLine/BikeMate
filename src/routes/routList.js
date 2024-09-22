@@ -6,11 +6,13 @@ import {
   loader as newVehicleLoader,
   action as newVehicleAction,
 } from "../components/Vehicles/VehicleForm";
+import ErrorPage from "../components/UI/ErrorPage";
 
 export const routeList = [
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <ErrorPage />,
     loader: () => {
       return null;
     },

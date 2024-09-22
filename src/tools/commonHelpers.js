@@ -1,4 +1,5 @@
 //Check if item exist in local storage
+
 //not overwrite if set to overwrite false
 export const setLocalStorage = (storageKey, storageItem, override = true) => {
   if (!storageKey || !storageItem || storageItem.length === 0) {
@@ -46,6 +47,8 @@ export const getTranslation = (name, category = "") => {
 
     return retTranslation;
   } catch (error) {
-    return new Error("not found");
+    const msg = "You have been fired.";
+
+    throw new Response(msg, { status: 500 });
   }
 };
