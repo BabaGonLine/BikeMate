@@ -30,12 +30,6 @@ export function initLocalStorage(langBase) {
     return;
   }
   setLocalStorage("language", { dictionary: langBase }, true);
-
-  //   setLocalStorage("language", { lang: "US" }, true);
-  //   //load translation
-  //   import("./translation/US.js").then((res) => {
-  //     setLocalStorage("language", { dictionary: res.Languge }, true);
-  //   });
 }
 
 export const getTranslation = (name, category = "") => {

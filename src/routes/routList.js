@@ -17,7 +17,7 @@ export const routeList = [
       return null;
     },
     children: [
-      { path: "/", element: <App /> },
+      { index: true, element: <App /> },
       {
         path: "/NewVehicle",
         element: <NewVehicle />,

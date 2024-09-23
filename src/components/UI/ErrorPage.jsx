@@ -5,8 +5,6 @@ import classes from "./ErrorPage.module.css";
 
 export default function ErrorPage() {
   const error = useRouteError();
-  // let errMessage = "Error has accured!";
-  // const err = errorObj.data;
 
   let errorMessage;
   if (isRouteErrorResponse(error)) {
@@ -25,13 +23,8 @@ export default function ErrorPage() {
 
   if (error.status === 404) {
     errorMessage = "404 - Page Not Found";
-    // return (
-    //   <>
-    //     <Header />
-    //     <div className={classes.error}>404 - no page like this</div>
-    //   </>
-    // );
   }
+
   return (
     <>
       <Header />
@@ -43,21 +36,4 @@ export default function ErrorPage() {
       </Alert>
     </>
   );
-
-  // const errorObj1 = useRouteError();
-  // console.log("isRouteErrorResponse", isRouteErrorResponse(errorObj1));
-  // let message = "Error";
-  // if (errorObj1.status !== 0) {
-  //   message = errorObj1.data.message;
-  //   console.log(errorObj1);
-  // }
-  // // const message = errorObj.data.message;
-  // // console.log(errorObj);
-  // return (
-  //   <>
-  //     <Header />
-  //     <h1>Error</h1>
-  //     <h3>{message}</h3>
-  //   </>
-  // );
 }

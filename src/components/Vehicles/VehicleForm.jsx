@@ -1,16 +1,24 @@
-import { Form, Link, redirect, useLoaderData } from "react-router-dom";
+import {
+  Form,
+  Link,
+  redirect,
+  useLoaderData,
+  useNavigation,
+} from "react-router-dom";
+
 import Button from "../UI/Button";
 import classes from "./VehicleForm.module.css";
 import { useEffect, useState } from "react";
 import { getTranslation } from "../../tools/commonHelpers";
+import SpinerElement from "../UI/SpinerElement";
 
 export default function VehicleForm() {
   const vBrandsList = useLoaderData();
+  const navigation = useNavigation();
   const [selectedType, setSelectedType] = useState("motorcycle");
   const [filteredBrands, setFilteredBrands] = useState([]);
 
-  //   const items = JSON.parse(localStorage.getItem("language"));
-  //   console.log(items.dictionary.vYear);
+  const isSubmitting = navigation.state === "submitting";
 
   useEffect(() => {
     setFilteredBrands(vBrandsList?.filter((b) => b.type === selectedType));
@@ -20,83 +28,88 @@ export default function VehicleForm() {
     setSelectedType(event.target.value);
   }
   return (
-    <Form method="post" className={classes.form}>
-      <div className={classes["controls-row"]}>
-        <p>
-          <label htmlFor="vType">{getTranslation("vType", "label")}</label>
-          <select
-            id="vType"
-            name="vType"
-            value={selectedType}
-            onChange={onTypeChange}
-          >
-            <option value="motorcycle">
-              {getTranslation("motorcycle", "options")}
-            </option>
-            <option value="private">
-              {getTranslation("privateV", "options")}
-            </option>
-          </select>
-        </p>
-        <p>
-          <label htmlFor="vBrand">{getTranslation("vBrand", "label")}</label>
-
-          <select id="vBrand" name="vBrand">
-            {filteredBrands.map((brand) => (
-              <option key={brand.brand} value={brand.brand}>
-                {brand.brand}
+    <>
+      {isSubmitting && <SpinerElement />}
+      <Form method="post" className={classes.form}>
+        <div className={classes["controls-row"]}>
+          <p>
+            <label htmlFor="vType">{getTranslation("vType", "label")}</label>
+            <select
+              id="vType"
+              name="vType"
+              value={selectedType}
+              onChange={onTypeChange}
+            >
+              <option value="motorcycle">
+                {getTranslation("motorcycle", "options")}
               </option>
-            ))}
-          </select>
-        </p>
-      </div>
-      <div className={classes["controls-row"]}>
-        <p className={classes["form-label"]}>
-          <label htmlFor="vModel">{getTranslation("vModel1", "label")}</label>
-        </p>
-        <p className={classes["form-input"]}>
-          <input type="text" id="vModel" name="vModel" required />
-        </p>
-      </div>
-      <div className={classes["controls-row"]}>
-        <p className={classes["form-label"]}>
-          <label htmlFor="vNumber">{getTranslation("vNumber", "label")}</label>
-        </p>
-        <p className={classes["form-input"]}>
-          <input type="number" id="vNumber" name="vNumber" required />
-        </p>
-      </div>
-      <div className={classes["controls-row"]}>
-        <p className={classes["form-label"]}>
-          <label htmlFor="vYear">{getTranslation("vYear", "label")}</label>
-        </p>
-        <p className={classes["form-input"]}>
-          <input
-            type="number"
-            max={2100}
-            min={1920}
-            id="vYear"
-            name="vYear"
-            required
-          />
-        </p>
-      </div>
-      <div className={classes["controls-row"]}>
-        <p className={classes["form-label"]}>
-          <label htmlFor="vKm">{getTranslation("vKm", "label")}</label>
-        </p>
-        <p className={classes["form-input"]}>
-          <input type="number" id="vKm" name="vKm" />
-        </p>
-      </div>
-      <p className={classes.actions}>
-        <Link to="..">
-          <Button textOnly>{getTranslation("btnCancel", "button")}</Button>
-        </Link>
+              <option value="private">
+                {getTranslation("privateV", "options")}
+              </option>
+            </select>
+          </p>
+          <p>
+            <label htmlFor="vBrand">{getTranslation("vBrand", "label")}</label>
 
-        <Button>{getTranslation("btnAddVehicle", "button")}</Button>
-      </p>
-    </Form>
+            <select id="vBrand" name="vBrand">
+              {filteredBrands.map((brand) => (
+                <option key={brand.brand} value={brand.brand}>
+                  {brand.brand}
+                </option>
+              ))}
+            </select>
+          </p>
+        </div>
+        <div className={classes["controls-row"]}>
+          <p className={classes["form-label"]}>
+            <label htmlFor="vModel">{getTranslation("vModel", "label")}</label>
+          </p>
+          <p className={classes["form-input"]}>
+            <input type="text" id="vModel" name="vModel" required />
+          </p>
+        </div>
+        <div className={classes["controls-row"]}>
+          <p className={classes["form-label"]}>
+            <label htmlFor="vNumber">
+              {getTranslation("vNumber", "label")}
+            </label>
+          </p>
+          <p className={classes["form-input"]}>
+            <input type="number" id="vNumber" name="vNumber" required />
+          </p>
+        </div>
+        <div className={classes["controls-row"]}>
+          <p className={classes["form-label"]}>
+            <label htmlFor="vYear">{getTranslation("vYear", "label")}</label>
+          </p>
+          <p className={classes["form-input"]}>
+            <input
+              type="number"
+              max={2100}
+              min={1920}
+              id="vYear"
+              name="vYear"
+              required
+            />
+          </p>
+        </div>
+        <div className={classes["controls-row"]}>
+          <p className={classes["form-label"]}>
+            <label htmlFor="vKm">{getTranslation("vKm", "label")}</label>
+          </p>
+          <p className={classes["form-input"]}>
+            <input type="number" id="vKm" name="vKm" />
+          </p>
+        </div>
+        <p className={classes.actions}>
+          <Link to="..">
+            <Button textOnly>{getTranslation("btnCancel", "button")}</Button>
+          </Link>
+
+          <Button>{getTranslation("btnAddVehicle", "button")}</Button>
+        </p>
+      </Form>
+    </>
   );
 }
 
