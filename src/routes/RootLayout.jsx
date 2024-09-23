@@ -6,6 +6,7 @@ export default function RootLayout() {
   return (
     <>
       <Header />
+
       <VehiclePanel />
       <Outlet />
     </>
