@@ -103,10 +103,14 @@ export default function VehicleForm() {
         </div>
         <p className={classes.actions}>
           <Link to="..">
-            <Button textOnly>{getTranslation("btnCancel", "button")}</Button>
+            <Button textOnly disabled={isSubmitting}>
+              {getTranslation("btnCancel", "button")}{" "}
+            </Button>
           </Link>
 
-          <Button>{getTranslation("btnAddVehicle", "button")}</Button>
+          <Button disabled={isSubmitting}>
+            {getTranslation("btnAddVehicle", "button")}
+          </Button>
         </p>
       </Form>
     </>
@@ -117,9 +121,13 @@ export async function action({ request }) {
   const formData = await request.formData();
   const postData = Object.fromEntries(formData);
   console.log(postData);
-  alert("addin vehicle");
+
+  await sleep(5000);
+
   return redirect("..");
 }
+
+const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay)); // for testing
 
 export async function loader() {
   // load models from db
