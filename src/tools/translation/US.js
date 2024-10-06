@@ -20,4 +20,8 @@ export const Languge = {
     vModel: "Model *",
     vKm: "Current KM",
   },
+
+  errors: {
+    cantFindDDl: "Failed fetching data!",
+  },
 };
