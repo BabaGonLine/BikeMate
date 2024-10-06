@@ -86,6 +86,7 @@ const Header = () => {
             ))}
           </Dropdown.Menu>
         </Dropdown>
+        <div>{process.env.NODE_ENV}</div>
         <div className={classes.lang}></div>
       </div>
     </header>

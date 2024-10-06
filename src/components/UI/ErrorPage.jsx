@@ -29,7 +29,9 @@ export default function ErrorPage() {
     <>
       <Header />
       <Alert variant="danger">
-        <Alert.Heading>{error.statusText}</Alert.Heading>
+        <Alert.Heading>
+          {error.statusText || "Unknown error occurred"}
+        </Alert.Heading>
         <p className={classes.error}>{errorMessage}</p>
         <hr />
         <p className="mb-0">Need help? Contact Support</p>

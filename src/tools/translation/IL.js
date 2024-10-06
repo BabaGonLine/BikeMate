@@ -18,4 +18,8 @@ export const Languge = {
     vModel: "דגם *",
     vKm: "מס קמ",
   },
+
+  errors: {
+    cantFindDDl: "חלה תקלה בקבלת נתונים",
+  },
 };
