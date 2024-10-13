@@ -11,11 +11,11 @@ export default function Auth() {
   const data = useActionData();
   const navigation = useNavigation();
   const [isSigning, setIsSigningn] = useState(false);
-  const [isNewMail, setIsNewMail] = useState(true);
+  // const [isNewMail, setIsNewMail] = useState(true);
 
   const isPosting = navigation.state === "submitting";
   function handleEmailChange() {
-    setIsNewMail = false;
+    // setIsNewMail = false;
   }
 
   return (
@@ -32,7 +32,7 @@ export default function Auth() {
             onChange={handleEmailChange}
           />
         </div>
-        {isNewMail && data && data.status === 409 && (
+        {data && data.status === 409 && (
           <p className={classes.danger}>
             {getTranslation("createUserError409", "message")}
           </p>
