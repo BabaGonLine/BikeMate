@@ -6,6 +6,7 @@ export default function Button({
   onClick,
   disabled = false,
   textOnly = false,
+  ribbon = null,
 }) {
   //   console.log(props);
   return (
@@ -17,6 +18,7 @@ export default function Button({
       disabled={disabled}
     >
       {children}
+      {ribbon && <span className={classes.ribbon}>{ribbon}</span>}
     </button>
   );
 }
