@@ -1,6 +1,5 @@
 import {
   Form,
-  json,
   Link,
   redirect,
   useActionData,
@@ -14,6 +13,7 @@ import { useEffect, useState } from "react";
 import { getTranslation } from "../../tools/commonHelpers";
 import SpinerElement from "../UI/SpinerElement";
 import Alert from "react-bootstrap/Alert";
+import { GetVehicles, ManageVehicle } from "../../tools/vehicleQuery";
 
 export default function VehicleForm() {
   const vBrandsList = useLoaderData();
@@ -34,6 +34,7 @@ export default function VehicleForm() {
   function onTypeChange(event) {
     setSelectedType(event.target.value);
   }
+
   return (
     <>
       {isSubmitting && <SpinerElement />}
@@ -101,6 +102,7 @@ export default function VehicleForm() {
               type="number"
               max={2100}
               min={1920}
+              defaultValue={new Date().getFullYear()}
               id="vYear"
               name="vYear"
               required
@@ -134,41 +136,21 @@ export default function VehicleForm() {
 export async function action({ request }) {
   const formData = await request.formData();
   const postData = Object.fromEntries(formData);
-  console.log(postData);
+  console.log("postdata", postData);
+  //
+  // await sleep(5000);
+  // console.log("formData", postData.vKm);
+  // if (postData.vKm === "") {
+  //   return "no km";  }
 
-  await sleep(5000);
-  console.log("formData", postData.vKm);
-  if (postData.vKm === "") {
-    return "no km";
-  }
+  const ret = await ManageVehicle(postData);
+  console.log(ret);
 
   return redirect("..");
 }
 
-const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay)); // for testing
+// const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay)); // for testing
 
 export async function loader() {
-  // load models from db
-  const url = process.env.REACT_APP_API_URL;
-  //https://localhost:7249/api/
-  const response = await fetch(url + "DropDowns", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  if (!response.ok) {
-    console.log(response);
-    throw json("error", { status: 500 });
-  }
-
-  const result = await response.json();
-
-  const vehicleBrands = result;
-  // [
-  //   { brand: "Honda", type: "motorcycle" },
-  //   { brand: "Kawasaky", type: "motorcycle" },
-  // ];
-  return json(vehicleBrands, { status: 200 });
+  return GetVehicles();
 }

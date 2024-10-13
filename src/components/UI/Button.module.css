@@ -5,6 +5,7 @@
   border-radius: 20px;
   font-size: 1rem;
   font-family: Georgia, "Times New Roman", Times, serif;
+  position: relative;
 }
 .button:hover {
   cursor: pointer;
@@ -12,7 +13,7 @@
 }
 
 .text-only {
-  background-color: none;
+  background-color: transparent !important;
   border: none;
 }
 
@@ -20,4 +21,18 @@
 .text-only:hover {
   box-shadow: none;
   color: #c6fb70;
+}
+
+.ribbon {
+  /* width: 60px; */
+  font-size: 14px;
+  padding: 4px;
+  position: absolute;
+  right: -5px;
+  top: -12px;
+  text-align: center;
+  border-radius: 35px;
+  transform: rotate(20deg);
+  background-color: #ff9800;
+  color: white;
 }

@@ -57,6 +57,9 @@ const Header = () => {
           <img src="/Logo/logo.webp" alt="BikeMate Logo" />
           <h1 className={classes["app-name"]}>BikeMate</h1>
         </Link>
+        <Link to={"/auth"}>
+          <p>Auth</p>
+        </Link>
 
         {/*language */}
         <Dropdown className="langDDl d-inline-block">

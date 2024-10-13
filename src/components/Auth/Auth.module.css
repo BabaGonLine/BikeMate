@@ -1,0 +1,54 @@
+.Auth {
+  margin: 20px auto;
+  width: 80%;
+  text-align: center;
+  box-shadow: 0 2px 3px #ccc;
+  border: 1px solid #eee;
+  padding: 10px;
+  box-sizing: border-box;
+  padding: 1rem 3rem;
+}
+
+.danger {
+  color: red;
+}
+
+@media (min-width: 600px) {
+  .Auth {
+    width: 500px;
+  }
+}
+
+.text-button {
+  color: #f39c12 !important;
+}
+
+.form {
+  padding: 1rem 3rem;
+}
+
+.controls-row {
+  display: flex;
+  gap: 2rem;
+  justify-content: end;
+}
+
+.controls-row .form-input {
+  width: 20%;
+}
+
+.Auth input {
+  margin: 0.5rem;
+  display: inline-flex;
+  width: 100%;
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: none;
+  /* background-color: #bdc3c7; */
+  color: #28262c;
+}
+
+.Auth button {
+  margin-top: 1rem;
+}
