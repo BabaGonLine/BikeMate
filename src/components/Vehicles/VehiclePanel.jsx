@@ -1,10 +1,11 @@
 import classes from "./VehiclePanel.module.css";
 import Button from "../UI/Button";
-import { json, Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import { getTranslation } from "../../tools/commonHelpers";
 import Vehicle from "./Vehicle";
 import { useState } from "react";
+import { GetVehicles } from "../../tools/vehicleQuery";
 
 export default function VehiclePanel() {
   const vehicalesList = useLoaderData();
@@ -49,18 +50,19 @@ export default function VehiclePanel() {
 }
 
 export async function loader() {
-  const url = process.env.REACT_APP_API_URL;
-  const response = await fetch(url + "Vehicle/gilad", {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  });
+  // const url = process.env.REACT_APP_API_URL;
+  // const response = await fetch(url + "Vehicle/gilad", {
+  //   method: "GET",
+  //   headers: { "Content-Type": "application/json" },
+  // });
 
-  if (!response.ok) {
-    // console.log(response);
-    throw json("error", { status: 500 });
-  }
-  const retVehicles = await response.json();
+  // if (!response.ok) {
+  //   // console.log(response);
+  //   throw json("error", { status: 500 });
+  // }
+  // const retVehicles = await response.json();
 
-  // console.log("myCars", retVehicles);
-  return json(retVehicles, { status: 200 });
+  // // console.log("myCars", retVehicles);
+  // return json(retVehicles, { status: 200 });
+  return GetVehicles();
 }

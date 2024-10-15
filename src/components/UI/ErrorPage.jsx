@@ -25,13 +25,15 @@ export default function ErrorPage() {
     errorMessage = "404 - Page Not Found";
   }
 
+  if (error.status === 401) {
+    errorMessage = "401 - Not loged in";
+  }
+
   return (
     <>
       <Header />
       <Alert variant="danger">
-        <Alert.Heading>
-          {error.statusText || "Unknown error occurred"}
-        </Alert.Heading>
+        <Alert.Heading>{error.statusText || "Error occurred"}</Alert.Heading>
         <p className={classes.error}>{errorMessage}</p>
         <hr />
         <p className="mb-0">Need help? Contact Support</p>

@@ -10,23 +10,37 @@ export async function manageUser(user) {
     body: JSON.stringify(newUser),
   });
 
+  if (!response.ok) {
+    return new json(response);
+  }
+
   const result = await response.json();
-  console.log("result", result);
-
-  //   if (response.status === 409 || response.ok) {
-
   return new json(result);
-  //   }
+}
 
-  //   if (!response.ok) {
-  //     throw json("Cant update user", { status: 500 });
-  //   }
+export async function LoginUser(userData) {
+  const data = {
+    user: userData.email,
+    password: userData.password,
+  };
+  const response = await fetch(url + "Users/Login", {
+    method: "PUT",
+    headers: { "content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+
+  if (!response.ok) {
+    return new json(response);
+  }
+
+  const result = await response.json();
+  return new json(result);
 }
 
 function setUserForApi(user) {
   const username = user.email.substring(0, user.email.indexOf("@"));
   let newUser = {
-    id: "",
+    id: user.id || "",
     firstName: user.fName,
     lastName: user.lName,
     email: user.email,

@@ -15,7 +15,7 @@ export const routeList = [
     path: "/",
     element: <RootLayout />,
     errorElement: <ErrorPage />,
-    loader: vehiclesLoader,
+    // loader: vehiclesLoader,
     children: [
       { index: true, element: <App /> },
       { path: "Auth/", element: <Auth />, action: authAction },
