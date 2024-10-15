@@ -99,7 +99,7 @@ export default function Auth() {
 export async function action({ request }) {
   const formData = await request.formData();
   const postData = Object.fromEntries(formData);
-  let ret;
+  // let ret;
   if (postData.type === "sign") {
     const addUserResponse = await manageUser(postData);
     const res = await addUserResponse.json();
