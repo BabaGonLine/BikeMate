@@ -50,6 +50,9 @@ export const getTranslation = (name, category = "") => {
 //Checks if current token is valid. Returns false if not valid and true if valid.
 export const isTokenExpired = () => {
   const token = JSON.parse(localStorage.getItem("token"));
+  if (!token) {
+    return true;
+  }
 
   const expireDate = new Date(token.expire);
   var currentDate = new Date();

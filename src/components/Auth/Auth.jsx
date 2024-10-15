@@ -1,7 +1,7 @@
 import Button from "../UI/Button";
 import {
   getTranslation,
-  isTokenExpired,
+  // isTokenExpired,
   setLocalStorage,
 } from "../../tools/commonHelpers";
 import classes from "./Auth.module.css";
@@ -17,7 +17,7 @@ export default function Auth() {
   const [isSigning, setIsSigningn] = useState(false);
   // const [isNewMail, setIsNewMail] = useState(true);
 
-  isTokenExpired();
+  // isTokenExpired();
 
   const isPosting = navigation.state === "submitting";
   function handleEmailChange() {
