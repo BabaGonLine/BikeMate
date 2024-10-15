@@ -1,7 +1,7 @@
 import Button from "../UI/Button";
 import {
   getTranslation,
-  isTokenExpired,
+  // isTokenExpired,
   setLocalStorage,
 } from "../../tools/commonHelpers";
 import classes from "./Auth.module.css";
