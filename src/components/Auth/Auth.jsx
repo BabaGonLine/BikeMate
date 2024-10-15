@@ -1,17 +1,23 @@
 import Button from "../UI/Button";
-import { getTranslation } from "../../tools/commonHelpers";
+import {
+  getTranslation,
+  isTokenExpired,
+  setLocalStorage,
+} from "../../tools/commonHelpers";
 import classes from "./Auth.module.css";
-import { json, useActionData, useNavigation } from "react-router";
+import { redirect, useActionData, useNavigation } from "react-router";
 import { Form } from "react-router-dom";
 import { useState } from "react";
 import SpinerElement from "../UI/SpinerElement";
-import { manageUser } from "../../tools/userQuery";
+import { LoginUser, manageUser } from "../../tools/userQuery";
 
 export default function Auth() {
   const data = useActionData();
   const navigation = useNavigation();
   const [isSigning, setIsSigningn] = useState(false);
   // const [isNewMail, setIsNewMail] = useState(true);
+
+  isTokenExpired();
 
   const isPosting = navigation.state === "submitting";
   function handleEmailChange() {
@@ -93,7 +99,7 @@ export default function Auth() {
 export async function action({ request }) {
   const formData = await request.formData();
   const postData = Object.fromEntries(formData);
-  let ret;
+  // let ret;
   if (postData.type === "sign") {
     const addUserResponse = await manageUser(postData);
     const res = await addUserResponse.json();
@@ -104,18 +110,33 @@ export async function action({ request }) {
     // traceId: "00-6ce1a6736d6451778651583225ff1c24-705a36f72367a848-00"
     // type: "Error: cant create user, Email alredy exists"
 
-    console.log("error !200", addUserResponse);
-    return res;
+    // need to do login in localstorage with res
+    if (!res.status) {
+      const token = { token: res.uidKey, expire: res.expireLogin };
+      setLocalStorage("token", token, true);
+    }
+    return redirect("..");
+    // return res;
   } else {
-    ret = json({ idToken: 111, userId: 1 }, { status: 200 });
+    const loginResponse = await LoginUser(postData);
+    const res = await loginResponse.json();
+
+    console.log("res", res);
+
+    // need to do login in localstorage with res
+    if (!res.status) {
+      const token = { token: res.uidKey, expire: res.expireLogin };
+      setLocalStorage("token", token, true);
+    }
+    return redirect("..");
   }
 
   // if success need to log out after a period of time:
   //the time would be the expiration time getting from server
-  const timeout = 5000;
-  setTimeout(() => {
-    //do logout
-  }, timeout);
+  // const timeout = 5000;
+  // setTimeout(() => {
+  //   //do logout
+  // }, timeout);
 
-  return ret;
+  // return ret;
 }

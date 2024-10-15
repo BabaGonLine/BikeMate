@@ -1,11 +1,11 @@
 import { json } from "react-router";
+import { privateFetch } from "./commonHelpers";
 
 const url = process.env.REACT_APP_API_URL;
 const currentUser = "gilad";
 
-export async function GetVehicles() {
-  // load vehicles models from db
-
+// load vehicles brands from db
+export async function GetVehiclesBrands() {
   const response = await fetch(url + "DropDowns", {
     method: "GET",
     headers: {
@@ -22,18 +22,55 @@ export async function GetVehicles() {
   return json(vehicleBrands, { status: 200 });
 }
 
-export async function ManageVehicle(data) {
-  const newVehicle = setVehicleForApi(data);
-  console.log("newVehilce", newVehicle);
-
-  const response = await fetch(url + "Vehicle/" + currentUser, {
-    method: "PUT",
-    headers: {
+export async function GetVehicles() {
+  console.log("a");
+  const response = await privateFetch(
+    url + "Vehicle/" + currentUser,
+    "GET",
+    {
       "Content-Type": "application/json",
     },
+    null
+  );
 
-    body: JSON.stringify(newVehicle),
-  });
+  // const response = await fetch(url + "Vehicle/gilad", {
+  //   method: "GET",
+  //   headers: { "Content-Type": "application/json" },
+  // });
+
+  console.log("response v", response);
+  if (!response.ok) {
+    console.log("error");
+    // console.log(response);
+    throw json("error", { status: response.status });
+  }
+  const retVehicles = await response.json();
+
+  // console.log("myCars", retVehicles);
+  return json(retVehicles, { status: 200 });
+}
+
+export async function ManageVehicle(data) {
+  const newVehicle = setVehicleForApi(data);
+  // console.log("newVehilce", newVehicle);
+
+  const response = await privateFetch(
+    url + "Vehicle/" + currentUser,
+    "PUT",
+    {
+      "Content-Type": "application/json",
+    },
+    newVehicle
+  );
+
+  // fetch(url + "Vehicle/" + currentUser, {
+  //   method: "PUT",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+
+  //   body: JSON.stringify(newVehicle),
+  // });
 
   console.log("after post");
 

@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import { getTranslation } from "../../tools/commonHelpers";
 import SpinerElement from "../UI/SpinerElement";
 import Alert from "react-bootstrap/Alert";
-import { GetVehicles, ManageVehicle } from "../../tools/vehicleQuery";
+import { GetVehiclesBrands, ManageVehicle } from "../../tools/vehicleQuery";
 
 export default function VehicleForm() {
   const vBrandsList = useLoaderData();
@@ -136,7 +136,7 @@ export default function VehicleForm() {
 export async function action({ request }) {
   const formData = await request.formData();
   const postData = Object.fromEntries(formData);
-  console.log("postdata", postData);
+  // console.log("postdata", postData);
   //
   // await sleep(5000);
   // console.log("formData", postData.vKm);
@@ -152,5 +152,5 @@ export async function action({ request }) {
 // const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay)); // for testing
 
 export async function loader() {
-  return GetVehicles();
+  return GetVehiclesBrands();
 }

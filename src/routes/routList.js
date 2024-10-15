@@ -7,7 +7,7 @@ import {
   action as newVehicleAction,
 } from "../components/Vehicles/VehicleForm";
 import ErrorPage from "../components/UI/ErrorPage";
-import { loader as vehiclesLoader } from "../components/Vehicles/VehiclePanel";
+// import { loader as vehiclesLoader } from "../components/Vehicles/VehiclePanel";
 import Auth, { action as authAction } from "../components/Auth/Auth";
 
 export const routeList = [
@@ -15,7 +15,7 @@ export const routeList = [
     path: "/",
     element: <RootLayout />,
     errorElement: <ErrorPage />,
-    loader: vehiclesLoader,
+    // loader: vehiclesLoader,
     children: [
       { index: true, element: <App /> },
       { path: "Auth/", element: <Auth />, action: authAction },

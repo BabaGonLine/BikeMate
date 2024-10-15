@@ -46,3 +46,28 @@ export const getTranslation = (name, category = "") => {
     throw new Response(msg, { status: 500 });
   }
 };
+
+//Checks if current token is valid. Returns false if not valid and true if valid.
+export const isTokenExpired = () => {
+  const token = JSON.parse(localStorage.getItem("token"));
+
+  const expireDate = new Date(token.expire);
+  var currentDate = new Date();
+  console.log(expireDate, currentDate, currentDate > expireDate);
+  return currentDate > expireDate;
+};
+
+export const privateFetch = async (url, method, currentHeaders, body) => {
+  const token = JSON.parse(localStorage.getItem("token"));
+  let newHeaders = { ...currentHeaders, authUid: token.token };
+  const bodyString = JSON.stringify(body);
+  let options = { method: method, headers: newHeaders };
+
+  if (method !== "GET" && body) {
+    options = { ...options, bodyString };
+  }
+  console.log(options);
+
+  const response = await fetch(url, options);
+  return response;
+};
