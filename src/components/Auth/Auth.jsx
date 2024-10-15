@@ -133,10 +133,10 @@ export async function action({ request }) {
 
   // if success need to log out after a period of time:
   //the time would be the expiration time getting from server
-  const timeout = 5000;
-  setTimeout(() => {
-    //do logout
-  }, timeout);
+  // const timeout = 5000;
+  // setTimeout(() => {
+  //   //do logout
+  // }, timeout);
 
-  return ret;
+  // return ret;
 }

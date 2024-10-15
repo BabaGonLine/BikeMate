@@ -7,7 +7,7 @@ import {
   action as newVehicleAction,
 } from "../components/Vehicles/VehicleForm";
 import ErrorPage from "../components/UI/ErrorPage";
-import { loader as vehiclesLoader } from "../components/Vehicles/VehiclePanel";
+// import { loader as vehiclesLoader } from "../components/Vehicles/VehiclePanel";
 import Auth, { action as authAction } from "../components/Auth/Auth";
 
 export const routeList = [
